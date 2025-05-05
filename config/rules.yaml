@@ -1,0 +1,45 @@
+- id: "1001"
+  name: "TCP Port Scan"
+  enabled: true
+  type: "threshold"
+  protocol: "tcp"
+  severity: "medium"
+  threshold: 15
+  timeframe: 30
+  match_field: "src_ip" # if the single IP makes more than 15 TCP connections within a 30 sec window  -> ALERT
+
+- id: "1002"
+  name: "ICMP Flood"
+  enabled: true
+  type: "threshold"
+  protocol: "icmp"
+  severity: "high"
+  threshold: 20
+  timeframe: 10
+  match_field: "src_ip" # 20 or more ICMP pckts within 10 secs -> ALERT
+
+- id: "1003"
+  name: "SSH Brute Force"
+  enabled: true
+  type: "threshold"
+  protocol: "tcp"
+  severity: "high"
+  threshold: 5
+  timeframe: 60
+  match_field: "src_ip" # 5 or more SSH attempts within a minute -> ALERT
+
+- id: "1004"
+  name: "Suspicious UserAgent"
+  enabled: true
+  type: "pattern"
+  protocol: "tcp"
+  severity: "medium"
+  pattern: "User-Agent: (sqlmap|nikto|nmap|dirbuster)" # checks HTTP headers for these user agents
+
+- id: "1005"
+  name: "Executable Download"
+  enabled: true
+  type: "pattern"
+  protocol: "tcp"
+  severity: "medium"
+  pattern: "GET.*\\.exe HTTP" # checks HTTP GET reqs where .exe's are downloaded

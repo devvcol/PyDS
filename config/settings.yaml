@@ -1,0 +1,17 @@
+capture:
+  interface: en0 # Network interface to monitor (change to match your system. probs eth0)
+  filter: "tcp or udp or icmp" # BPF filter
+  log_file: "logs/capture.log"
+  log_level: "INFO"
+
+detection:
+  log_file: "logs/detection.log"
+  log_level: "INFO"
+  threshold_window: 60 # Time window in seconds for threshold-based rules
+
+alerts:
+  log_file: "logs/alerts.log"
+  log_format: "json" # text, json
+  min_severity: "low" # low, medium, high, critical
+  alert_actions:
+    - "log" # log, console, file (more can be added later)
