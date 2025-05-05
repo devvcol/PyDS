@@ -31,5 +31,7 @@ The two config files (settings.yaml & rules.yaml) should be modified to match yo
 
 ### Future additions
 
+- [ ] Better CLI visuals (curses?)
 - [ ] Web Dashboard
 - [ ] PCAP import/export
+
